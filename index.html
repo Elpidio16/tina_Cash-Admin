@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Simulateur Cash Admin - Mesurez le coût caché de votre administratif et trouvez une solution adaptée">
+    <meta name="description"
+        content="Simulateur Cash Admin - Mesurez le coût caché de votre administratif et trouvez une solution adaptée">
     <title>Cash Admin - Simulateur de Coût Administratif</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
@@ -30,20 +31,13 @@
             <div class="card">
                 <h2 class="section-title">Combien vous coûte votre administratif ?</h2>
                 <p class="section-subtitle">Découvrez en 30 secondes le temps et l'argent perdus chaque mois.</p>
-                
+
                 <form id="calculatorForm" class="form">
                     <div class="form-group">
                         <label for="weeklyHours">Combien d'heures par semaine consacrez-vous à l'administratif ?</label>
                         <div class="input-with-unit">
-                            <input 
-                                type="number" 
-                                id="weeklyHours" 
-                                min="0" 
-                                max="168" 
-                                step="0.5" 
-                                placeholder="Ex: 5"
-                                required
-                            >
+                            <input type="number" id="weeklyHours" min="0" max="168" step="0.5" placeholder="Ex: 5"
+                                required>
                             <span class="unit">heures/semaine</span>
                         </div>
                     </div>
@@ -51,14 +45,7 @@
                     <div class="form-group">
                         <label for="hourlyRate">Quelle est votre valeur horaire ?</label>
                         <div class="input-with-unit">
-                            <input 
-                                type="number" 
-                                id="hourlyRate" 
-                                min="0" 
-                                step="1" 
-                                placeholder="Ex: 50"
-                                required
-                            >
+                            <input type="number" id="hourlyRate" min="0" step="1" placeholder="Ex: 50" required>
                             <span class="unit">€/heure</span>
                         </div>
                         <small class="help-text">Votre tarif horaire habituel ou CA annuel ÷ heures travaillées</small>
@@ -98,7 +85,8 @@
                     <!-- Transition CTA -->
                     <div class="transition-cta">
                         <h3 class="cta-question">Et si vous pouviez récupérer ce temps et ce chiffre d'affaires ?</h3>
-                        <button id="btnQualification" class="btn btn-secondary">Identifier mon besoin administratif</button>
+                        <button id="btnQualification" class="btn btn-secondary">Identifier mon besoin
+                            administratif</button>
                     </div>
                 </div>
             </div>
@@ -108,7 +96,8 @@
         <section id="phase2" class="section hidden">
             <div class="card">
                 <h2 class="section-title">Qualifions votre besoin</h2>
-                <p class="section-subtitle">3 questions rapides pour identifier la solution adaptée à votre situation.</p>
+                <p class="section-subtitle">3 questions rapides pour identifier la solution adaptée à votre situation.
+                </p>
 
                 <form id="qualificationForm" class="form">
                     <!-- Question 1: Tâches chronophages -->
@@ -118,7 +107,7 @@
                             Qu'est-ce qui vous prend le plus de temps aujourd'hui ?
                         </label>
                         <small class="help-text">Sélectionnez toutes les réponses qui s'appliquent</small>
-                        
+
                         <div class="checkbox-grid">
                             <label class="checkbox-item">
                                 <input type="checkbox" name="tasks" value="devis">
@@ -187,13 +176,7 @@
                                 <input type="checkbox" id="autreCheckbox" name="tasks" value="autre">
                                 <span>Autre :</span>
                             </label>
-                            <input 
-                                type="text" 
-                                id="autreText" 
-                                placeholder="Précisez..." 
-                                class="text-input"
-                                disabled
-                            >
+                            <input type="text" id="autreText" placeholder="Précisez..." class="text-input" disabled>
                         </div>
                     </div>
 
@@ -203,7 +186,7 @@
                             <span class="question-number">2.</span>
                             À quel moment gérez-vous votre administratif ?
                         </label>
-                        
+
                         <div class="radio-group">
                             <label class="radio-item">
                                 <input type="radio" name="timing" value="soir" required>
@@ -234,7 +217,7 @@
                             <span class="question-number">3.</span>
                             Aujourd'hui, ce que vous cherchez avant tout, c'est :
                         </label>
-                        
+
                         <div class="radio-group">
                             <label class="radio-item">
                                 <input type="radio" name="objective" value="temps" required>
@@ -271,7 +254,7 @@
                     <div class="check-icon">✓</div>
                     <h2>Merci pour vos réponses.</h2>
                     <p>D'après les informations que vous avez partagées,<br>votre besoin est principalement lié à :</p>
-                    
+
                     <div class="need-badge">
                         <span id="detectedNeed">-</span>
                     </div>
@@ -283,7 +266,8 @@
 
                     <!-- Contact CTA -->
                     <div class="contact-cta">
-                        <h3 class="cta-question">Souhaitez-vous échanger avec un professionnel adapté à votre situation ?</h3>
+                        <h3 class="cta-question">Souhaitez-vous échanger avec un professionnel adapté à votre situation
+                            ?</h3>
                         <div class="cta-buttons">
                             <button id="btnContactYes" class="btn btn-primary">Oui, je souhaite en parler</button>
                             <button id="btnContactNo" class="btn btn-outline">Pas maintenant</button>
@@ -297,10 +281,15 @@
         <section id="contactSection" class="section hidden">
             <div class="card">
                 <h2 class="section-title">Parlons de votre situation</h2>
-                <p class="section-subtitle">Nous vous recontactons rapidement pour échanger sur la meilleure solution pour vous.</p>
+                <p class="section-subtitle">Nous vous recontactons rapidement pour échanger sur la meilleure solution
+                    pour vous.</p>
 
                 <form id="contactForm" class="form">
                     <div class="form-row">
+                        <div class="form-group">
+                            <label for="lastName">Nom *</label>
+                            <input type="text" id="lastName" required>
+                        </div>
                         <div class="form-group">
                             <label for="firstName">Prénom *</label>
                             <input type="text" id="firstName" required>
@@ -309,12 +298,21 @@
 
                     <div class="form-group">
                         <label for="email">Email *</label>
-                        <input type="email" id="email" required>
+                        <input type="email" id="email" placeholder="exemple@entreprise.fr" required>
+                        <small class="help-text">Nous utiliserons cet email pour vous recontacter</small>
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" required>
+                        <div class="phone-input-group">
+                            <span class="phone-prefix">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"
+                                    alt="France" class="flag-icon">
+                                +33
+                            </span>
+                            <input type="tel" id="phone" placeholder="6 12 34 56 78" maxlength="12" required>
+                        </div>
+                        <small class="help-text">Format: 6 12 34 56 78 (sans le 0)</small>
                     </div>
 
                     <div class="form-group">
@@ -343,7 +341,8 @@
                     <div class="form-group">
                         <label class="checkbox-item rgpd-checkbox">
                             <input type="checkbox" id="rgpd" required>
-                            <span>Vos informations sont utilisées uniquement pour vous recontacter. Aucun engagement.</span>
+                            <span>Vos informations sont utilisées uniquement pour vous recontacter. Aucun
+                                engagement.</span>
                         </label>
                     </div>
 
@@ -380,4 +379,5 @@
     <!-- App Script -->
     <script src="app.js"></script>
 </body>
+
 </html>

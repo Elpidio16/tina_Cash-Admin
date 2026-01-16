@@ -48,26 +48,26 @@ Application web complète permettant aux indépendants, TPE et professions libé
    ```
 4. Suivez les instructions pour déployer
 
-## 📧 Configuration EmailJS
+## 📧 Configuration Web3Forms
 
 Pour recevoir les données du formulaire par email :
 
-1. Suivez le guide complet dans [EMAILJS_SETUP.md](EMAILJS_SETUP.md)
-2. Créez un compte gratuit sur [EmailJS](https://www.emailjs.com)
-3. Configurez votre service et template
-4. Ajoutez vos identifiants dans `app.js` (lignes 23-27)
+1. Suivez le guide complet dans [WEB3FORMS_SETUP.md](WEB3FORMS_SETUP.md)
+2. Créez un compte gratuit sur [Web3Forms](https://web3forms.com)
+3. Obtenez votre Access Key
+4. Ajoutez votre clé dans `app.js` (ligne 29)
 
-**Mode démo** : Sans configuration EmailJS, les données sont stockées dans `localStorage` et consultables via la console.
+**Mode démo** : Sans configuration Web3Forms, les données sont stockées dans `localStorage` et consultables via la console.
 
 ## 📁 Structure des fichiers
 
 ```
 V1/
-├── index.html           # Structure HTML complète
-├── styles.css           # Design system premium
-├── app.js              # Logique applicative complète
-├── EMAILJS_SETUP.md    # Guide de configuration EmailJS
-└── README.md           # Ce fichier
+├── index.html              # Structure HTML complète
+├── styles.css              # Design system premium
+├── app.js                  # Logique applicative complète
+├── WEB3FORMS_SETUP.md     # Guide de configuration Web3Forms
+└── README.md              # Ce fichier
 ```
 
 ## 🎨 Design
@@ -82,7 +82,7 @@ L'application utilise un design moderne avec :
 ## 💾 Stockage des données
 
 - **localStorage** : Sauvegarde automatique de la progression utilisateur
-- **EmailJS** : Envoi des données de contact par email
+- **Web3Forms** : Envoi des données de contact par email
 - Aucune base de données requise
 
 ## 🔒 RGPD
@@ -137,7 +137,7 @@ L'algorithme de détection fonctionne par priorité :
 
 Pour toute question ou problème :
 1. Vérifiez la console du navigateur (F12)
-2. Consultez [EMAILJS_SETUP.md](EMAILJS_SETUP.md) pour EmailJS
+2. Consultez [WEB3FORMS_SETUP.md](WEB3FORMS_SETUP.md) pour Web3Forms
 3. Vérifiez que tous les fichiers sont au même niveau
 
 ## 📄 Licence
