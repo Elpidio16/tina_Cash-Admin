@@ -86,7 +86,116 @@ function initializeApp() {
 
     // Email validation
     setupEmailValidation();
+
+    // NEW: Navigation & UI enhancements
+    setupNavigation();
+    setupScrollEffects();
+    setupMobileMenu();
 }
+
+// ========================
+// NAVIGATION & SCROLL
+// ========================
+
+function setupNavigation() {
+    // Smooth scroll for all navigation links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+
+            // Check if it's a cross-page link (contains .html)
+            if (href.includes('.html')) {
+                // Allow normal navigation to other pages
+                return;
+            }
+
+            // For same-page anchors, prevent default and smooth scroll
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Close mobile menu if open
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            }
+        });
+    });
+
+    // Update active link on scroll
+    window.addEventListener('scroll', updateActiveNavLink);
+}
+
+function setupScrollEffects() {
+    const navbar = document.getElementById('navbar');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
+
+function setupMobileMenu() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', function () {
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function (e) {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    let currentSection = '';
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Helper functions for scrolling
+function scrollToSimulator() {
+    const simulator = document.getElementById('simulator');
+    if (simulator) {
+        simulator.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function scrollToFeatures() {
+    const features = document.getElementById('features');
+    if (features) {
+        features.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
 
 // ========================
 // PHASE 1: CALCULATOR
@@ -366,8 +475,8 @@ Date de soumission: ${new Date().toLocaleString('fr-FR')}
     // Prepare form data for Web3Forms
     const formData = new FormData();
     formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-    formData.append('subject', `Nouveau lead Cash Admin - ${appState.contact.firstName} ${appState.contact.lastName}`);
-    formData.append('from_name', 'Cash Admin Simulator');
+    formData.append('subject', `Nouveau lead 4Services - ${appState.contact.firstName} ${appState.contact.lastName}`);
+    formData.append('from_name', '4Services Simulator');
     formData.append('message', emailBody);
 
     // Add individual fields for better email formatting

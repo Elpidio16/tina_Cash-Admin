@@ -5,376 +5,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Simulateur Cash Admin - Mesurez le coût caché de votre administratif et trouvez une solution adaptée">
-    <title>Cash Admin - Simulateur de Coût Administratif</title>
+        content="4Services - Simulateur gratuit pour mesurer le coût caché de votre administratif et trouver une solution adaptée">
+    <title>4Services - Libérez-vous de votre charge administrative</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-
 </head>
 
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <h1 class="logo">Cash Admin</h1>
-            <p class="tagline">Le simulateur qui révèle le coût caché de votre administratif</p>
-        </header>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-gradient">4Services</span>
+            </a>
 
-        <!-- PHASE 1: Calculator -->
-        <section id="phase1" class="section active">
-            <div class="card">
-                <h2 class="section-title">Combien vous coûte votre administratif ?</h2>
-                <p class="section-subtitle">Découvrez en 30 secondes le temps et l'argent perdus chaque mois.</p>
-
-                <form id="calculatorForm" class="form">
-                    <div class="form-group">
-                        <label for="weeklyHours">Combien d'heures par semaine consacrez-vous à l'administratif ?</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="weeklyHours" min="0" max="168" step="0.5" placeholder="Ex: 5"
-                                required>
-                            <span class="unit">heures/semaine</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="hourlyRate">Quelle est votre valeur horaire ?</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="hourlyRate" min="0" step="1" placeholder="Ex: 50" required>
-                            <span class="unit">€/heure</span>
-                        </div>
-                        <small class="help-text">Votre tarif horaire habituel ou CA annuel ÷ heures travaillées</small>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Calculer mon coût administratif</button>
-                </form>
-
-                <!-- Results -->
-                <div id="results" class="results hidden">
-                    <div class="results-grid">
-                        <div class="result-card">
-                            <span class="result-label">Temps mensuel</span>
-                            <span class="result-value" id="monthlyHours">-</span>
-                            <span class="result-unit">heures/mois</span>
-                        </div>
-                        <div class="result-card highlight">
-                            <span class="result-label">Coût mensuel</span>
-                            <span class="result-value" id="monthlyCost">-</span>
-                            <span class="result-unit">€/mois</span>
-                        </div>
-                        <div class="result-card">
-                            <span class="result-label">Coût annuel</span>
-                            <span class="result-value" id="annualCost">-</span>
-                            <span class="result-unit">€/an</span>
-                        </div>
-                    </div>
-
-                    <div class="impact-message">
-                        <div class="impact-icon">💡</div>
-                        <div class="impact-text">
-                            <h3>Le déclic économique</h3>
-                            <p id="impactText">-</p>
-                        </div>
-                    </div>
-
-                    <!-- Transition CTA -->
-                    <div class="transition-cta">
-                        <h3 class="cta-question">Et si vous pouviez récupérer ce temps et ce chiffre d'affaires ?</h3>
-                        <button id="btnQualification" class="btn btn-secondary">Identifier mon besoin
-                            administratif</button>
-                    </div>
-                </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Accueil</a>
+                <a href="#features" class="nav-link">Fonctionnalités</a>
+                <a href="simulator.html" class="nav-link">Simulateur</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </section>
 
-        <!-- PHASE 2: Qualification -->
-        <section id="phase2" class="section hidden">
-            <div class="card">
-                <h2 class="section-title">Qualifions votre besoin</h2>
-                <p class="section-subtitle">3 questions rapides pour identifier la solution adaptée à votre situation.
+            <button class="btn-nav-cta" onclick="window.location.href='simulator.html'">Essayer gratuitement</button>
+
+            <!-- Mobile menu toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Libérez-vous de votre <span class="gradient-text">charge administrative</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Découvrez en 30 secondes combien vous coûte réellement votre administratif et identifiez la
+                    solution adaptée à votre situation.
                 </p>
 
-                <form id="qualificationForm" class="form">
-                    <!-- Question 1: Tâches chronophages -->
-                    <div class="form-group">
-                        <label class="question-label">
-                            <span class="question-number">1.</span>
-                            Qu'est-ce qui vous prend le plus de temps aujourd'hui ?
-                        </label>
-                        <small class="help-text">Sélectionnez toutes les réponses qui s'appliquent</small>
-
-                        <div class="checkbox-grid">
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="devis">
-                                <span>Devis</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="factures">
-                                <span>Factures</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="relances">
-                                <span>Relances clients</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="urssaf">
-                                <span>Déclarations URSSAF</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="tva">
-                                <span>Déclarations de TVA</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="comptable">
-                                <span>Préparation pour le comptable</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="classement">
-                                <span>Classement / Organisation</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="maj-dossiers">
-                                <span>Mise à jour des dossiers</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="echeances">
-                                <span>Suivi des échéances</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="reporting">
-                                <span>Tableaux de suivi / Reporting</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="emails">
-                                <span>Emails</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="suivi-clients">
-                                <span>Suivi clients</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="agenda">
-                                <span>Agenda / Rendez-vous</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="admin-perso">
-                                <span>Administratif personnel</span>
-                            </label>
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="tasks" value="courriers">
-                                <span>Courriers</span>
-                            </label>
-                        </div>
-
-                        <div class="form-group" style="margin-top: 1rem;">
-                            <label class="checkbox-item" style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="checkbox" id="autreCheckbox" name="tasks" value="autre">
-                                <span>Autre :</span>
-                            </label>
-                            <input type="text" id="autreText" placeholder="Précisez..." class="text-input" disabled>
-                        </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">12 990€</span>
+                        <span class="stat-label">Coût moyen annuel</span>
                     </div>
-
-                    <!-- Question 2: Moment de gestion -->
-                    <div class="form-group">
-                        <label class="question-label">
-                            <span class="question-number">2.</span>
-                            À quel moment gérez-vous votre administratif ?
-                        </label>
-
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="timing" value="soir" required>
-                                <span>Le soir, après mes journées</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="timing" value="weekend" required>
-                                <span>Le week-end</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="timing" value="entre-deux" required>
-                                <span>Entre deux tâches</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="timing" value="urgence" required>
-                                <span>En urgence</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="timing" value="pas-le-choix" required>
-                                <span>Quand je n'ai plus le choix</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Question 3: Objectif -->
-                    <div class="form-group">
-                        <label class="question-label">
-                            <span class="question-number">3.</span>
-                            Aujourd'hui, ce que vous cherchez avant tout, c'est :
-                        </label>
-
-                        <div class="radio-group">
-                            <label class="radio-item">
-                                <input type="radio" name="objective" value="temps" required>
-                                <span>Gagner du temps</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="objective" value="charge-mentale" required>
-                                <span>Réduire ma charge mentale</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="objective" value="organisation" required>
-                                <span>Mieux m'organiser</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="objective" value="retard" required>
-                                <span>Ne plus être en retard</span>
-                            </label>
-                            <label class="radio-item">
-                                <input type="radio" name="objective" value="developpement" required>
-                                <span>Développer mon activité</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Voir mon besoin personnalisé</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- PHASE 2: Personalized Message -->
-        <section id="phase2Results" class="section hidden">
-            <div class="card">
-                <div class="personalized-message">
-                    <div class="check-icon">✓</div>
-                    <h2>Merci pour vos réponses.</h2>
-                    <p>D'après les informations que vous avez partagées,<br>votre besoin est principalement lié à :</p>
-
-                    <div class="need-badge">
-                        <span id="detectedNeed">-</span>
-                    </div>
-
-                    <div class="complementary-text">
-                        <p><strong>Une solution adaptée existe.</strong></p>
-                        <p>Elle dépend de votre activité, de votre rythme et de vos priorités.</p>
-                    </div>
-
-                    <!-- Contact CTA -->
-                    <div class="contact-cta">
-                        <h3 class="cta-question">Souhaitez-vous échanger avec un professionnel adapté à votre situation
-                            ?</h3>
-                        <div class="cta-buttons">
-                            <button id="btnContactYes" class="btn btn-primary">Oui, je souhaite en parler</button>
-                            <button id="btnContactNo" class="btn btn-outline">Pas maintenant</button>
-                        </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">5h/sem</span>
+                        <span class="stat-label">Temps administratif moyen</span>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Contact Form -->
-        <section id="contactSection" class="section hidden">
-            <div class="card">
-                <h2 class="section-title">Parlons de votre situation</h2>
-                <p class="section-subtitle">Nous vous recontactons rapidement pour échanger sur la meilleure solution
-                    pour vous.</p>
-
-                <form id="contactForm" class="form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="lastName">Nom *</label>
-                            <input type="text" id="lastName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="firstName">Prénom *</label>
-                            <input type="text" id="firstName" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" placeholder="exemple@entreprise.fr" required>
-                        <small class="help-text">Nous utiliserons cet email pour vous recontacter</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Téléphone *</label>
-                        <div class="phone-input-group">
-                            <span class="phone-prefix">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png"
-                                    alt="France" class="flag-icon">
-                                +33
-                            </span>
-                            <input type="tel" id="phone" placeholder="6 12 34 56 78" maxlength="12" required>
-                        </div>
-                        <small class="help-text">Format: 6 12 34 56 78 (sans le 0)</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="location">Ville / Code postal *</label>
-                        <input type="text" id="location" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Disponibilité *</label>
-                        <div class="checkbox-row">
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="availability" value="matin">
-                                <span>Matin</span>
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="availability" value="apres-midi">
-                                <span>Après-midi</span>
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" name="availability" value="soir">
-                                <span>Soir</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-item rgpd-checkbox">
-                            <input type="checkbox" id="rgpd" required>
-                            <span>Vos informations sont utilisées uniquement pour vous recontacter. Aucun
-                                engagement.</span>
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" id="btnSubmitContact">Envoyer ma demande</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Thank You Section -->
-        <section id="thankYou" class="section hidden">
-            <div class="card text-center">
-                <div class="thank-you-content">
-                    <div class="success-icon">🎉</div>
-                    <h2>Merci pour votre confiance !</h2>
-                    <p>Nous avons bien reçu votre demande.<br>Un professionnel vous recontactera très prochainement.</p>
-                    <button id="btnRestart" class="btn btn-outline">Recommencer une simulation</button>
+                <div class="hero-cta">
+                    <button class="btn btn-primary btn-large" onclick="window.location.href='simulator.html'">
+                        <span>Calculer mon coût réel</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-outline btn-large"
+                        onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+                        En savoir plus
+                    </button>
                 </div>
             </div>
-        </section>
 
-        <!-- No Contact Section -->
-        <section id="noContact" class="section hidden">
-            <div class="card text-center">
-                <div class="thank-you-content">
-                    <div class="success-icon">👍</div>
-                    <h2>Aucun problème !</h2>
-                    <p>Vous pouvez revenir à tout moment pour explorer les solutions adaptées à votre situation.</p>
-                    <button id="btnRestartNoContact" class="btn btn-outline">Recommencer une simulation</button>
+            <div class="hero-visual">
+                <img src="images/hero_admin_freedom.png" alt="Libération de la charge administrative"
+                    class="hero-image">
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <span>Découvrir</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pourquoi l'utiliser ?</h2>
+                <p class="section-subtitle">Un outil simple pour prendre conscience du vrai coût de votre
+                    administratif</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Calcul précis</h3>
+                    <p>Mesurez en 30 secondes le temps et l'argent perdus chaque mois dans votre administratif</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Besoin identifié</h3>
+                    <p>3 questions rapides pour détecter automatiquement votre catégorie de besoin administratif</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Solution adaptée</h3>
+                    <p>Recevez une recommandation personnalisée selon votre activité et vos priorités</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% confidentiel</h3>
+                    <p>Vos données sont protégées, aucun engagement, aucun tracking publicitaire</p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Column 1: Brand -->
+                <div class="footer-col">
+                    <h3 class="footer-brand">4Services</h3>
+                    <p class="footer-description">
+                        L'outil gratuit pour mesurer le coût caché de votre administratif et reprendre le contrôle de
+                        votre temps.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#features">Fonctionnalités</a></li>
+                        <li><a href="simulator.html">Simulateur</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Informations légales</h4>
+                    <ul class="footer-links">
+                        <li><a href="#mentions">Mentions légales</a></li>
+                        <li><a href="#confidentialite">Politique de confidentialité</a></li>
+                        <li><a href="#cgu">Conditions d'utilisation</a></li>
+                        <li><a href="#rgpd">Données personnelles (RGPD)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Contact -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Nous contacter</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="3" y="4" width="18" height="16" rx="2" />
+                                <path d="m3 7 9 6 9-6" />
+                            </svg>
+                            <a href="mailto:4services.ad@gmail.com">4services.ad@gmail.com</a>
+                        </li>
+                        <li>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <span>+33 6 67 37 21 49</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 4Services. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- App Script -->
     <script src="app.js"></script>
