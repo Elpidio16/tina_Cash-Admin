@@ -40,57 +40,79 @@ document.addEventListener('DOMContentLoaded', function () {
 // ========================
 
 function initializeApp() {
-    // Phase 1: Calculator
-    const calculatorForm = document.getElementById('calculatorForm');
-    calculatorForm.addEventListener('submit', handleCalculatorSubmit);
-
-    // Transition CTA
-    const btnQualification = document.getElementById('btnQualification');
-    btnQualification.addEventListener('click', showQualificationForm);
-
-    // Phase 2: Qualification Form
-    const qualificationForm = document.getElementById('qualificationForm');
-    qualificationForm.addEventListener('submit', handleQualificationSubmit);
-
-    // "Autre" checkbox handler
-    const autreCheckbox = document.getElementById('autreCheckbox');
-    const autreText = document.getElementById('autreText');
-    autreCheckbox.addEventListener('change', function () {
-        autreText.disabled = !this.checked;
-        if (!this.checked) {
-            autreText.value = '';
-        }
-    });
-
-    // Contact CTA
-    const btnContactYes = document.getElementById('btnContactYes');
-    const btnContactNo = document.getElementById('btnContactNo');
-    btnContactYes.addEventListener('click', showContactForm);
-    btnContactNo.addEventListener('click', showNoContactMessage);
-
-    // Contact Form
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', handleContactSubmit);
-
-    // Restart buttons
-    const btnRestart = document.getElementById('btnRestart');
-    const btnRestartNoContact = document.getElementById('btnRestartNoContact');
-    btnRestart.addEventListener('click', restartSimulation);
-    btnRestartNoContact.addEventListener('click', restartSimulation);
-
-    // Load saved data from localStorage
-    loadFromLocalStorage();
-
-    // Phone number formatting and validation
-    setupPhoneValidation();
-
-    // Email validation
-    setupEmailValidation();
-
-    // NEW: Navigation & UI enhancements
+    // NEW: Navigation & UI enhancements (must run first)
     setupNavigation();
     setupScrollEffects();
     setupMobileMenu();
+
+    // Phase 1: Calculator (only on simulator page)
+    const calculatorForm = document.getElementById('calculatorForm');
+    if (calculatorForm) {
+        calculatorForm.addEventListener('submit', handleCalculatorSubmit);
+    }
+
+    // Transition CTA (only on simulator page)
+    const btnQualification = document.getElementById('btnQualification');
+    if (btnQualification) {
+        btnQualification.addEventListener('click', showQualificationForm);
+    }
+
+    // Phase 2: Qualification Form (only on simulator page)
+    const qualificationForm = document.getElementById('qualificationForm');
+    if (qualificationForm) {
+        qualificationForm.addEventListener('submit', handleQualificationSubmit);
+    }
+
+    // "Autre" checkbox handler (only on simulator page)
+    const autreCheckbox = document.getElementById('autreCheckbox');
+    const autreText = document.getElementById('autreText');
+    if (autreCheckbox && autreText) {
+        autreCheckbox.addEventListener('change', function () {
+            autreText.disabled = !this.checked;
+            if (!this.checked) {
+                autreText.value = '';
+            }
+        });
+    }
+
+    // Contact CTA (only on simulator page)
+    const btnContactYes = document.getElementById('btnContactYes');
+    const btnContactNo = document.getElementById('btnContactNo');
+    if (btnContactYes && btnContactNo) {
+        btnContactYes.addEventListener('click', showContactForm);
+        btnContactNo.addEventListener('click', showNoContactMessage);
+    }
+
+    // Contact Form (only on simulator page)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleContactSubmit);
+    }
+
+    // Restart buttons (only on simulator page)
+    const btnRestart = document.getElementById('btnRestart');
+    const btnRestartNoContact = document.getElementById('btnRestartNoContact');
+    if (btnRestart) {
+        btnRestart.addEventListener('click', restartSimulation);
+    }
+    if (btnRestartNoContact) {
+        btnRestartNoContact.addEventListener('click', restartSimulation);
+    }
+
+    // Load saved data from localStorage (only on simulator page)
+    if (calculatorForm) {
+        loadFromLocalStorage();
+    }
+
+    // Phone number formatting and validation (only on simulator page)
+    if (document.getElementById('phone')) {
+        setupPhoneValidation();
+    }
+
+    // Email validation (only on simulator page)
+    if (document.getElementById('email')) {
+        setupEmailValidation();
+    }
 }
 
 // ========================
